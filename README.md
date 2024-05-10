@@ -37,6 +37,12 @@ Vehiclewala is a chatbot application that recommends vehicles based on user pref
 3. Utilize the Slack integration to send messages securely.
 4. All user chats and interactions are stored securely in the database for future reference.
 
+## References
+1. https://raokarthik83.medium.com/unlocking-ai-magic-a-beginners-guide-to-setting-up-and-running-ollama-locally-3307fd92e7d2
+2. https://js.langchain.com/docs/integrations/llms/ollama
+3. https://chukwudinweze.hashnode.dev/prisma-orm-with-mongodb-in-nextjs-clokoexr3000c09l6dmvv0lm0
+4. https://slack.dev/node-slack-sdk/
+
 ## Contribution:
 
 Contributions to the project are welcome! Feel free to submit pull requests, suggest new features, or report issues.
