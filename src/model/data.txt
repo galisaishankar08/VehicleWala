@@ -1,0 +1,418 @@
+
+/*
+FROM tinyllama:latest
+
+PARAMETER temperature 1
+
+TEMPLATE"""
+You are the VehicleWala, an AI vehicle recommender assistant. I can provide recommendations for various types of vehicles in india based on your preferences and needs.
+"""
+
+SYSTEM"""
+VehicleWala: Welcome! I'm here to assist you with vehicle recommendations.
+"""
+
+MESSAGE"""
+System: You can ask me for recommendations based on the type of vehicle you are looking for. For example, you can ask for recommendations for hatchbacks, sedans, SUVs, motorcycles, scooters, trucks, buses, etc.
+User: What are the best hatchbacks in India?
+Assist: 
+        Maruti Suzuki Swift:
+          - name: Maruti Suzuki Swift
+          type: Hatchback
+          description: A popular hatchback known for its fuel efficiency and compact size.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 1.2L
+              - Fuel Efficiency: 23.2 km/l
+              - Seating Capacity: 5
+        Tata Nexon EV:
+          - name: Tata Nexon EV
+          type: Electric SUV
+          description: India's first electric compact SUV, offering sustainable mobility with zero emissions.
+          specifications:
+              - Battery Capacity: 30.2 kWh
+              - Range: 312 km (ARAI Certified)
+              - Charging Time: 8 hours (AC), 1 hour (DC fast charger)
+              - Seating Capacity: 5
+{
+  "history_size": 3
+}
+"""
+
+LICENSE"""
+Copyright (c) 2024 Gali Sai Shankar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+*/
+
+/**
+FROM tinylamma
+
+PARAMETER temperature 1
+
+SYSTEM"""
+You are the VehicleWala, an AI vehicle recommender assistant. I can provide recommendations for various types of vehicles based on your preferences and needs.
+"""
+
+ENTRIES
+    Maruti Suzuki Swift:
+        - name: Maruti Suzuki Swift
+          type: Hatchback
+          description: A popular hatchback known for its fuel efficiency and compact size.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 1.2L
+              - Fuel Efficiency: 23.2 km/l
+              - Seating Capacity: 5
+    Tata Nexon EV:
+        - name: Tata Nexon EV
+          type: Electric SUV
+          description: India's first electric compact SUV, offering sustainable mobility with zero emissions.
+          specifications:
+              - Battery Capacity: 30.2 kWh
+              - Range: 312 km (ARAI Certified)
+              - Charging Time: 8 hours (AC), 1 hour (DC fast charger)
+              - Seating Capacity: 5
+    Hyundai Grand i10 Nios:
+        - name: Hyundai Grand i10 Nios
+          type: Hatchback
+          description: A stylish and feature-packed hatchback offering a comfortable ride.
+          specifications:
+              - Engine Type: Petrol/CNG
+              - Displacement: 1.2L (Petrol), 1.2L (CNG)
+              - Fuel Efficiency (Petrol): 20.7 km/l
+              - Fuel Efficiency (CNG): 26.2 km/kg
+              - Seating Capacity: 5
+    Mahindra Bolero:
+        - name: Mahindra Bolero
+          type: SUV
+          description: A rugged and reliable SUV, popular for its durability and off-road capabilities.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 1.5L
+              - Fuel Efficiency: 16.7 km/l
+              - Seating Capacity: 7
+    Maruti Suzuki Ertiga:
+        - name: Maruti Suzuki Ertiga
+          type: MPV
+          description: A versatile family car with ample space and comfort for long journeys.
+          specifications:
+              - Engine Type: Petrol/CNG
+              - Displacement: 1.5L (Petrol), 1.5L (CNG)
+              - Fuel Efficiency (Petrol): 19.01 km/l
+              - Fuel Efficiency (CNG): 26.08 km/kg
+              - Seating Capacity: 7
+    Honda City:
+        - name: Honda City
+          type: Sedan
+          description: A premium sedan known for its refined performance and luxurious features.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 1.5L
+              - Fuel Efficiency: 17.8 km/l
+              - Seating Capacity: 5
+    Renault Kwid:
+        - name: Renault Kwid
+          type: Hatchback
+          description: An entry-level hatchback with SUV-inspired design and practical features.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 0.8L, 1.0L
+              - Fuel Efficiency: 22.3 km/l
+              - Seating Capacity: 5
+    Honda Activa 6G:
+        - name: Honda Activa 6G
+          type: Scooter
+          description: India's best-selling scooter known for its reliability and practicality.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 109.51cc
+              - Fuel Efficiency: 60 km/l
+              - Seating Capacity: 2
+    Bajaj Pulsar NS200:
+        - name: Bajaj Pulsar NS200
+          type: Motorcycle
+          description: A sporty and powerful motorcycle designed for performance enthusiasts.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 199.5cc
+              - Maximum Power: 24.5 HP
+              - Fuel Efficiency: 35 km/l
+              - Seating Capacity: 2
+    TVS Apache RTR 160 4V:
+        - name: TVS Apache RTR 160 4V
+          type: Motorcycle
+          description: A stylish and agile motorcycle with advanced features for a thrilling ride.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 159.7cc
+              - Maximum Power: 16.02 HP
+              - Fuel Efficiency: 45 km/l
+              - Seating Capacity: 2
+    Tata Tiago:
+        - name: Tata Tiago
+          type: Hatchback
+          description: A value-for-money hatchback offering modern design and feature-rich interiors.
+          specifications:
+              - Engine Type: Petrol/CNG
+              - Displacement: 1.2L (Petrol), 1.2L (CNG)
+              - Fuel Efficiency (Petrol): 23.84 km/l
+              - Fuel Efficiency (CNG): 26 km/kg
+              - Seating Capacity: 5
+    Hyundai Aura:
+        - name: Hyundai Aura
+          type: Sedan
+          description: A compact sedan with premium features and spacious interiors.
+          specifications:
+              - Engine Type: Petrol/CNG
+              - Displacement: 1.2L (Petrol), 1.2L (CNG)
+              - Fuel Efficiency (Petrol): 20.5 km/l
+              - Fuel Efficiency (CNG): 28 km/kg
+              - Seating Capacity: 5
+    Mahindra eKUV100:
+        - name: Mahindra eKUV100
+          type: Electric SUV
+          description: India's most affordable electric SUV with modern features and practical design.
+          specifications:
+              - Battery Capacity: 15.9 kWh
+              - Range: 147 km (ARAI Certified)
+              - Charging Time: 5 hours (AC), 1 hour (DC fast charger)
+              - Seating Capacity: 5
+    Hero Splendor Plus:
+        - name: Hero Splendor Plus
+          type: Motorcycle
+          description: India's best-selling commuter motorcycle known for its reliability and efficiency.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 97.2cc
+              - Maximum Power: 8.02 HP
+              - Fuel Efficiency: 80 km/l
+              - Seating Capacity: 2 
+    Royal Enfield Classic 350:
+        - name: Royal Enfield Classic 350
+          type: Motorcycle
+          description: A legendary cruiser motorcycle with timeless design and powerful performance.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 346cc
+              - Maximum Power: 19.1 HP
+              - Fuel Efficiency: 40 km/l
+              - Seating Capacity: 2
+    Suzuki Access 125:
+        - name: Suzuki Access 125
+          type: Scooter
+          description: A premium scooter with a blend of style, performance, and comfort.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 124cc
+              - Maximum Power: 8.7 HP
+              - Fuel Efficiency: 52 km/l
+              - Seating Capacity: 2
+    KTM Duke 200:
+        - name: KTM Duke 200
+          type: Motorcycle
+          description: A high-performance naked motorcycle with sporty handling and aggressive design.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 199.5cc
+              - Maximum Power: 24.6 HP
+              - Fuel Efficiency: 35 km/l
+              - Seating Capacity: 2
+    Yamaha Fascino 125:
+        - name: Yamaha Fascino 125
+          type: Scooter
+          description: A stylish and trendy scooter with modern features and comfortable ride quality.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 125cc
+              - Maximum Power: 8.2 HP
+              - Fuel Efficiency: 58 km/l
+              - Seating Capacity: 2
+    Bajaj Dominar 400:
+        - name: Bajaj Dominar 400
+          type: Motorcycle
+          description: A powerful sports cruiser motorcycle with advanced features and touring capabilities.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 373.3cc
+              - Maximum Power: 39.4 HP
+              - Fuel Efficiency: 27 km/l
+              - Seating Capacity: 2
+    Yamaha YZF R15 V3:
+        - name: Yamaha YZF R15 V3
+          type: Motorcycle
+          description: A popular sports bike with track-focused performance and aggressive styling.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 155cc
+              - Maximum Power: 18.6 HP
+              - Fuel Efficiency: 42 km/l
+              - Seating Capacity: 2
+    Suzuki Gixxer SF:
+        - name: Suzuki Gixxer SF
+          type: Motorcycle
+          description: A fully faired sports motorcycle with a blend of performance and style.
+          specifications:
+              - Engine Type: Petrol
+              - Displacement: 155cc
+              - Maximum Power: 13.6 HP
+              - Fuel Efficiency: 48 km/l
+              - Seating Capacity: 2
+    Tata Ace Gold:
+        - name: Tata Ace Gold
+          type: Mini Truck
+          description: India's most preferred mini-truck, known for its reliability and versatility.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 798cc
+              - Maximum Power: 16 HP
+              - Payload Capacity: 750 kg
+    Mahindra Bolero Pickup:
+        - name: Mahindra Bolero Pickup
+          type: Pickup Truck
+          description: A robust and powerful pickup truck designed for commercial use.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 2523cc
+              - Maximum Power: 63 HP
+              - Payload Capacity: 1250 kg
+    Ashok Leyland 1618:
+        - name: Ashok Leyland 1618
+          type: Medium Duty Truck
+          description: A reliable and efficient truck suitable for various cargo transportation needs.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 5660cc
+              - Maximum Power: 180 HP
+              - Payload Capacity: 10,200 kg
+    Tata Ultra 1518:
+        - name: Tata Ultra 1518
+          type: Heavy Duty Truck
+          description: A high-performance truck offering superior power and payload capacity.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 5600cc
+              - Maximum Power: 177 HP
+              - Payload Capacity: 15,300 kg
+    Mahindra Blazo X 35:
+        - name: Mahindra Blazo X 35
+          type: Trailer Truck
+          description: A flagship trailer truck known for its advanced features and reliability on long-haul routes.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 7200cc
+              - Maximum Power: 350 HP
+              - Payload Capacity: 40,000 kg
+    Eicher Pro 3015:
+        - name: Eicher Pro 3015
+          type: Bus
+          description: A comfortable and spacious bus suitable for inter-city and school transportation.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 3300cc
+              - Maximum Power: 150 HP
+              - Seating Capacity: 30
+    Volvo 9400XL:
+        - name: Volvo 9400XL
+          type: Luxury Bus
+          description: A premium luxury bus with world-class features and safety standards.
+          specifications:
+              - Engine Type: Diesel
+              - Displacement: 7200cc
+              - Maximum Power: 330 HP
+              - Seating Capacity: 54
+    Hyundai Venue:
+        - name: Hyundai Venue
+          type: Compact SUV
+          description: A stylish and feature-packed compact SUV with modern design and advanced technology.
+          specifications:
+              - Engine Type: Petrol/Diesel
+              - Displacement: 1.2L (Petrol), 1.5L (Diesel)
+              - Fuel Efficiency (Petrol): 17.52 km/l
+              - Fuel Efficiency (Diesel): 23.7 km/l
+              - Seating Capacity: 5
+    Ford EcoSport:
+        - name: Ford EcoSport
+          type: Compact SUV
+          description: A versatile and rugged compact SUV with a sporty design and advanced features.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 1.5L (Petrol), 1.5L (Diesel)
+            - Fuel Efficiency (Petrol): 15.9 km/l
+            - Fuel Efficiency (Diesel): 21.7 km/l
+            - Seating Capacity: 5
+    Toyota Innova Crysta:
+        - name: Toyota Innova Crysta
+          type: MPV
+          description: A premium MPV known for its spacious interiors, comfort, and reliability.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 2.7L (Petrol), 2.4L (Diesel)
+            - Fuel Efficiency (Petrol): 11.25 km/l
+            - Fuel Efficiency (Diesel): 15.1 km/l
+            - Seating Capacity: 7/8
+    BMW 3 Series:
+        - name: BMW 3 Series
+          type: Luxury Sedan
+          description: A luxurious and powerful sedan with cutting-edge technology and exceptional performance.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 2.0L (Petrol), 2.0L (Diesel)
+            - Fuel Efficiency (Petrol): 16.13 km/l
+            - Fuel Efficiency (Diesel): 19.62 km/l
+            - Seating Capacity: 5
+    Audi Q7:
+        - name: Audi Q7
+          type: Luxury SUV
+          description: A premium SUV with a blend of luxury, comfort, and advanced safety features.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 3.0L (Petrol), 3.0L (Diesel)
+            - Fuel Efficiency (Petrol): 9.5 km/l
+            - Fuel Efficiency (Diesel): 14.75 km/l
+            - Seating Capacity: 7
+    Mercedes-Benz C-Class:
+        - name: Mercedes-Benz C-Class
+          type: Luxury Sedan
+          description: A sophisticated and elegant sedan with a perfect balance of luxury and performance.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 1.5L (Petrol), 2.0L (Diesel)
+            - Fuel Efficiency (Petrol): 14.49 km/l
+            - Fuel Efficiency (Diesel): 17.9 km/l
+            - Seating Capacity: 5
+    Volkswagen Polo:
+        - name: Volkswagen Polo
+          type: Hatchback
+          description: A premium hatchback known for its solid build quality and refined driving experience.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 1.0L (Petrol), 1.5L (Diesel)
+            - Fuel Efficiency (Petrol): 18.24 km/l
+            - Fuel Efficiency (Diesel): 21.49 km/l
+            - Seating Capacity: 5
+    Nissan Magnite:
+        - name: Nissan Magnite
+          type: Compact SUV
+          description: A feature-packed compact SUV with a bold design and spacious interiors.
+          specifications:
+            - Engine Type: Petrol
+            - Displacement: 1.0L
+            - Fuel Efficiency: 20 km/l
+            - Seating Capacity: 5
+    Kia Seltos:
+        - name: Kia Seltos
+          type: Compact SUV
+          description: A stylish and feature-rich compact SUV with a premium feel and excellent performance.
+          specifications:
+            - Engine Type: Petrol/Diesel
+            - Displacement: 1.5L (Petrol), 1.5L (Diesel)
+            - Fuel Efficiency (Petrol): 16.8 km/l
+            - Fuel Efficiency (Diesel): 20.8 km/l
+            - Seating Capacity: 5
+**/

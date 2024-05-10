@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(248.47deg, #5470B5 0%, #0F172A 99.15%);
+  height: 97vh;
+  scroll-behavior: smooth;
+  font-family: 'open-sans';
+}
+
+textarea {
+  resize: none;
+}
